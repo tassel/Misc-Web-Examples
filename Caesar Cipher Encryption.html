@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Caesar Cipher Encryption</title>
+    <script>
+        function encrypt() {
+            const ALPHABET = 25;
+            const encKeyStr = document.getElementById("encKey").value;
+            const encKey = parseInt(encKeyStr);
+            const data = document.getElementById("phrase").value;
+            let result = "";
+
+            for (let i = 0; i < data.length; i++) {
+                let encChar = ((data.charCodeAt(i) - 65 + encKey) % ALPHABET) + 65;
+                result += String.fromCharCode(encChar);
+            }
+
+            document.getElementById("result").innerText = "Encrypted phrase: " + result;
+        }
+    </script>
+</head>
+<body>
+    <h1>Caesar Cipher Encryption</h1>
+    <label for="encKey">Enter the encryption key (number): </label>
+    <input type="text" id="encKey" /><br><br>
+    <label for="phrase">Enter the phrase to encrypt (capital letters): </label>
+    <input type="text" id="phrase" /><br><br>
+    <button onclick="encrypt()">Encrypt</button>
+    <p id="result"></p>
+</body>
+</html>
